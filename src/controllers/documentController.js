@@ -25,7 +25,8 @@ exports.uploadDocument = async (req, res) => {
       const document = await Document.create({
         name: file.originalname,
         filePath: `${bucketName}/${objectName}`,
-        url: url,
+        bucketName: bucketName,
+        objectName: objectName,
       });
   
       res.status(201).json(document);

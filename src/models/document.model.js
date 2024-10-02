@@ -13,10 +13,14 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false
       },
-      url: {
+      bucketName: {
         type: DataTypes.STRING,
         allowNull: false
-      },  
+      },
+      objectName: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
       uploadedBy: {
         type: DataTypes.INTEGER,
         references: {

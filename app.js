@@ -27,6 +27,7 @@ console.table(listEndpoints(app));
 app.listen(port, async () => {
   try {
     await sequelize.authenticate();
+   // await sequelize.sync({ force: true });
     logger.info('Conexión establecida correctamente.');
   } catch (error) {
     logger.error('No se pudo conectar con la base de datos:', error)
