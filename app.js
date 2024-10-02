@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
+const { errors } = require('celebrate');
 const logger = require('./src/middlewares/logger');
 const app = express();
 const port = process.env.PORT || 3000;
@@ -9,6 +10,7 @@ global.logger = logger;
 // Middleware para parsear JSON
 app.use(express.json());
 app.use(morgan('combined', { stream: { write: message => logger.info(message.trim()) } }));
+app.use(errors());
 
 // Ruta de ejemplo
 app.get('/', (req, res) => {
