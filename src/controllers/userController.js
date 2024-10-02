@@ -55,10 +55,10 @@ exports.loginUser = async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ where: { email } });
     if (!user || !(await bcrypt.compare(password, user.password))) {
-      return res.status(401).send('Correo electrónico o contraseña incorrectos');
+      return res.status(401).send({error :'Correo electrónico o contraseña incorrectos'});
     }
     const token = jwt.sign({ id: user.id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
-    res.status(200).json({ token });
+    res.status(200).json({ token : token});
     logger.info('Usuario autenticado exitosamente');
   } catch (error) {
     logger.error('Error al autenticar usuario:', error);
