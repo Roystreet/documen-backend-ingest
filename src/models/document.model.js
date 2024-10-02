@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         autoIncrement: true
       },
-      title: {
+      name: {
         type: DataTypes.STRING,
         allowNull: false
       },
@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false
       },
+      url: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },  
       uploadedBy: {
         type: DataTypes.INTEGER,
         references: {

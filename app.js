@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 app.use('/api', routes);
 
 app.use(errors());
-console.log(listEndpoints(app));
+console.table(listEndpoints(app));
 // Iniciar el servidor
 app.listen(port, async () => {
   try {
