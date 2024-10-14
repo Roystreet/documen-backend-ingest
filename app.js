@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
+const cors = require('cors'); 
 const { errors } = require('celebrate');
 const logger = require('./src/middlewares/logger');
 const listEndpoints = require('express-list-endpoints');
@@ -10,6 +11,7 @@ const { sequelize } = require('./src/models');
 const routes = require('./src/router/index');
 
 global.logger = logger;
+app.use(cors());
 // Middleware para parsear JSON
 app.use(express.json());
 app.use(morgan('combined', { stream: { write: message => logger.info(message.trim()) } }));

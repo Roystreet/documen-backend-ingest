@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const userRouter = require('./userRouter');
 const documentRouter = require('./documentRouter');
-/*const roleRouter = require('./roleRouter');
 const companyRouter = require('./companyRouter');
+/*const roleRouter = require('./roleRouter');
 const chatRouter = require('./chatRouter');
 const chatMessageRouter = require('./chatMessageRouter');
 const userRoleRouter = require('./userRoleRouter');
@@ -10,6 +10,7 @@ const userRoleRouter = require('./userRoleRouter');
 
 router.use('/users', userRouter)
 router.use('/documents', documentRouter)
+router.use('/companies', companyRouter)
 /*
 router.use('/roles', roleRouter)
 router.use('/companies', companyRouter)

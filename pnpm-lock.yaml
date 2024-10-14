@@ -32,6 +32,9 @@ importers:
       celebrate:
         specifier: ^15.0.3
         version: 15.0.3
+      cors:
+        specifier: ^2.8.5
+        version: 2.8.5
       dotenv:
         specifier: ^16.4.5
         version: 16.4.5
@@ -41,6 +44,9 @@ importers:
       express-list-endpoints:
         specifier: ^7.1.0
         version: 7.1.0
+      express-validator:
+        specifier: ^7.2.0
+        version: 7.2.0
       joi:
         specifier: ^17.13.3
         version: 17.13.3
@@ -736,6 +742,10 @@ packages:
   core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
 
+  cors@2.8.5:
+    resolution: {integrity: sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==}
+    engines: {node: '>= 0.10'}
+
   debug@2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
     peerDependencies:
@@ -857,6 +867,10 @@ packages:
   express-list-endpoints@7.1.0:
     resolution: {integrity: sha512-7FyKxABfkRC0t6B6btxlAcFr0WrpPAL12MFAGhAxoIi/OyphxVQzVmyuWbcNxEApBmNzzgt2khjlqj/3wyHMMA==}
     engines: {node: '>=18'}
+
+  express-validator@7.2.0:
+    resolution: {integrity: sha512-I2ByKD8panjtr8Y05l21Wph9xk7kk64UMyvJCl/fFM/3CTJq8isXYPLeKW/aZBCdb/LYNv63PwhY8khw8VWocA==}
+    engines: {node: '>= 8.0.0'}
 
   express@4.21.0:
     resolution: {integrity: sha512-VqcNGcj/Id5ZT1LZ/cfihi3ttTn+NJmkli2eZADigjq29qTlWi/hAQ43t/VLPq8+UX06FCEx3ByOYet6ZFblng==}
@@ -2154,6 +2168,11 @@ snapshots:
 
   core-util-is@1.0.3: {}
 
+  cors@2.8.5:
+    dependencies:
+      object-assign: 4.1.1
+      vary: 1.1.2
+
   debug@2.6.9:
     dependencies:
       ms: 2.0.0
@@ -2231,6 +2250,11 @@ snapshots:
   expr-eval@2.0.2: {}
 
   express-list-endpoints@7.1.0: {}
+
+  express-validator@7.2.0:
+    dependencies:
+      lodash: 4.17.21
+      validator: 13.12.0
 
   express@4.21.0:
     dependencies:

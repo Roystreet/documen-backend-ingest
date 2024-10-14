@@ -24,5 +24,6 @@ router.post('/upload', upload.single('file'), documentController.uploadDocument)
 router.get('/:id', documentController.getDocumentById);
 router.get('/', documentController.getAllDocuments);
 router.delete('/:id', documentController.deleteDocumentById);
+router.post('/query', documentController.answerQuery);
 
 module.exports = router;
