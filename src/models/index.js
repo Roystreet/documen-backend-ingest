@@ -13,11 +13,12 @@ const UserRole = require('./user-role.model')(sequelize, DataTypes);
 
 // Asociaciones (Relaciones)
 Role.associate({ User, UserRole });
-Company.associate({ User });
-Document.associate({ User, Chat });
+Company.associate({ User, Document});
+Document.associate({ User, Chat, Company });
 Chat.associate({ Document, ChatMessage });
 ChatMessage.associate({ Chat, User });
 User.associate({ Role, UserRole, Company, Document, ChatMessage });
+
 
 module.exports = {
     sequelize,

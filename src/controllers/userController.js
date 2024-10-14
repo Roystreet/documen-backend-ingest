@@ -58,7 +58,7 @@ exports.loginUser = async (req, res) => {
       return res.status(401).send({error :'Correo electrónico o contraseña incorrectos'});
     }
     const token = jwt.sign({ id: user.id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
-    res.status(200).json({ token : token});
+    res.status(200).json({ data: user ,token : token});
     logger.info('Usuario autenticado exitosamente');
   } catch (error) {
     logger.error('Error al autenticar usuario:', error);

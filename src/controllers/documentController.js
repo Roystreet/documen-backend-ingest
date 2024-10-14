@@ -13,6 +13,7 @@ const { PromptTemplate } = require("@langchain/core/prompts");
 exports.uploadDocument = async (req, res) => {
   try {
     const { file } = req;
+    console.log(req.body);
     console.log(file);
     if (!file) {
       return res.status(400).json({ error: 'No se ha subido ningún archivo' });
@@ -34,6 +35,7 @@ exports.uploadDocument = async (req, res) => {
       filePath: `${bucketName}/${objectName}`,
       bucketName: bucketName,
       objectName: objectName,
+      companyId: req.body.companyId,
     });
 
     const index = PineconeClient.Index(indexName);
