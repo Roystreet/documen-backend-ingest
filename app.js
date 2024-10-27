@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
-const cors = require('cors'); 
+const cors = require('cors');
 const { errors } = require('celebrate');
 const logger = require('./src/middlewares/logger');
 const listEndpoints = require('express-list-endpoints');
@@ -28,8 +28,9 @@ console.table(listEndpoints(app));
 // Iniciar el servidor
 app.listen(port, async () => {
   try {
+    logger.info(port)
     await sequelize.authenticate();
-   // await sequelize.sync({ force: true });
+    // await sequelize.sync({ force: true });
     logger.info('Conexión establecida correctamente.');
   } catch (error) {
     logger.error('No se pudo conectar con la base de datos:', error)
