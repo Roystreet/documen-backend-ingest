@@ -11,7 +11,7 @@ const { sequelize } = require('./src/models');
 const routes = require('./src/router/index');
 
 global.logger = logger;
-app.use(cors());
+app.use(cors('*'));
 // Middleware para parsear JSON
 app.use(express.json());
 app.use(morgan('combined', { stream: { write: message => logger.info(message.trim()) } }));
