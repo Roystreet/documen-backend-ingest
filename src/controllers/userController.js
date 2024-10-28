@@ -35,6 +35,27 @@ exports.updateUser = async (req, res) => {
   }
 };
 
+exports.updateUserPassword = async (req, res) => {
+  try {
+    const { id, password } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const user = await User.findByPk(id);
+    if (!user) {
+      return res.status(404).send('Usuario no encontrado');
+    }
+    user.password = hashedPassword;
+    await user.save();
+    res.status(200).json({
+      success: true,
+      message: 'Contraseña actualizada exitosamente',
+    });
+    logger.info('Contraseña de usuario actualizada exitosamente');
+  } catch (e) {
+    logger.error('Error al actualizar contraseña de usuario:', error);
+    res.status(500).send('Error al actualizar contraseña de usuario');
+  }
+}
+
 exports.getUser = async (req, res) => {
   try {
     const { id } = req.params;
