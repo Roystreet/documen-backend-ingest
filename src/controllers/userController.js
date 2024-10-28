@@ -18,14 +18,14 @@ exports.createUser = async (req, res) => {
 exports.updateUser = async (req, res) => {
   try {
     const { id } = req.params;
-    const { username, email, password } = req.body;
+    const { name, lastname, email } = req.body;
     const user = await User.findByPk(id);
     if (!user) {
       return res.status(404).send('Usuario no encontrado');
     }
-    if (username) user.username = username;
     if (email) user.email = email;
-    if (password) user.password = await bcrypt.hash(password, 10);
+    if (name) user.name = name;
+    if (lastname) user.lastname = lastname;
     await user.save();
     res.status(200).json(user);
     logger.info('Usuario actualizado exitosamente');
@@ -55,10 +55,10 @@ exports.loginUser = async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ where: { email } });
     if (!user || !(await bcrypt.compare(password, user.password))) {
-      return res.status(401).send({error :'Correo electrónico o contraseña incorrectos'});
+      return res.status(401).send({ error: 'Correo electrónico o contraseña incorrectos' });
     }
     const token = jwt.sign({ id: user.id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
-    res.status(200).json({ data: user ,token : token});
+    res.status(200).json({ data: user, token: token });
     logger.info('Usuario autenticado exitosamente');
   } catch (error) {
     logger.error('Error al autenticar usuario:', error);

@@ -91,10 +91,23 @@ exports.getUserForCompany = async (req, res) => {
                 data: [],
             });
         }
+
         res.status(200).json({
             succes: true,
             message: 'Usuarios obtenidos exitosamente',
-            data: users,
+            data: users.map(user => {
+                return {
+                    id: user.id,
+                    name: user.name,
+                    lastname: user.lastname,
+                    username: user.username,
+                    email: user.email,
+                    companyId: user.companyId,
+                    active: user.active,
+                    isAdmin: user.isAdmin,
+                    role: user.role,
+                }
+            }),
         });
 
     } catch (error) {
