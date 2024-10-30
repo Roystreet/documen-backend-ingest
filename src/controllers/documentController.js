@@ -172,7 +172,7 @@ exports.answerQuery = async (req, res) => {
 
     let stream = await model.stream(prompt);
     for await (const data of stream) {
-      res.write(`data: ${data.content}\n\n`);
+      res.write(`${data.content}`);
     }
     res.end();
   } catch (error) {
